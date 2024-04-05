@@ -1,0 +1,41 @@
+package ch15.lecture.exercise;
+
+import java.util.LinkedList;
+import java.util.Queue;
+
+public class P679 {
+    public static void main(String[] args) {
+
+        Queue<Message> messageQueue = new LinkedList<>();
+
+        messageQueue.offer(new Message("SendMail","홍길동"));
+        messageQueue.offer(new Message("sendSMS","신용권"));
+        messageQueue.offer(new Message("sendKakaotalk","김자바"));
+
+        while (!messageQueue.isEmpty()) {
+            Message message = messageQueue.poll();
+            switch(message.command) {
+                case "sendMail":
+                    System.out.println(message.to+"님에게 메일을 보냈습니다");
+                    break;
+                case "sendSMS":
+                    System.out.println(message.to+"님에게 SMS를 보냇습니다");
+                    break;
+                case "sendKakaotalk":
+                    System.out.println(message.to+"님에게 카톡을 보냈습니다");
+                    break;
+            }
+        }
+
+    }
+}
+
+class Message {
+    String command;
+    String to;
+
+    public Message(String command, String to) {
+        this.command = command;
+        this.to = to;
+    }
+}
